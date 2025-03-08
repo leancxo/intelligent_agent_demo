@@ -1,0 +1,12 @@
+streamlit
+langchain
+langchain-community
+langchain-openai
+openai
+python-dotenv
+requests
+pydantic
+tiktoken
+matplotlib
+pandas
+google-search-results
