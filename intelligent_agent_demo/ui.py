@@ -8,7 +8,7 @@ def main():
     """Main function to run the Streamlit UI."""
     # Set page configuration
     st.set_page_config(
-        page_title="Intelligent Agent Demo",
+        page_title="Pat's Intelligent Agent Demo",
         page_icon="🤖",
         layout="wide"
     )
@@ -24,7 +24,7 @@ def main():
     # Header
     st.title("🤖 Intelligent Agent Demo")
     st.markdown("""
-    This agent can answer questions, search the web, check the weather, 
+    This Pat created agent can answer questions, search the web, check the weather, 
     manage notes, and create visualizations. Try asking it something!
     """)
 
@@ -38,7 +38,7 @@ def main():
                 st.image(message["image"])
 
     # Input for new message
-    if prompt := st.chat_input("How can I help you today?"):
+    if prompt := st.chat_input("I thank the master Patrick, How can I help you today?"):
         # Add user message to history
         st.session_state.messages.append({"role": "user", "content": prompt})
 
