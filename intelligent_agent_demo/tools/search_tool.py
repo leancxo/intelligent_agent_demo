@@ -1,6 +1,5 @@
 # tools/search_tool.py
 import os
-from langchain.utilities import SerpAPIWrapper
 from langchain.tools import Tool
 
 
@@ -9,7 +8,13 @@ class SearchTool:
 
     def __init__(self):
         """Initialize the search utility."""
-        self.search = SerpAPIWrapper(serpapi_api_key=os.getenv("SERPAPI_API_KEY"))
+        try:
+            from langchain_community.utilities import SerpAPIWrapper
+            self.search = SerpAPIWrapper(serpapi_api_key=os.getenv("SERPAPI_API_KEY"))
+            self.is_available = True
+        except ImportError:
+            print("Warning: SerpAPI package not available. Install with: pip install google-search-results")
+            self.is_available = False
 
     def search_web(self, query):
         """
@@ -19,8 +24,10 @@ class SearchTool:
             query (str): The search query
 
         Returns:
-            str: Search results
+            str: Search results or error message
         """
+        if not self.is_available:
+            return "Web search is currently unavailable. Please install required packages."
         return self.search.run(query)
 
     def get_tool(self):
